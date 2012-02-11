@@ -202,7 +202,7 @@ namespace BusinessLogic
                     return new Regex(@"(?<date1>\d\d-\d\d)\s+(?<date2>\d\d-\d\d)\s+(?<desc>[\w $#'-@&]+)\s+(?<loc>[\w $@#']+)\s+(?<kronor>-?[\d ]+),(?<ore>[\d]{2})");
                 //return new Regex(@"(?<date1>(\d\d-\d\d))\s+(?<date2>(\d\d-\d\d))\s+(?<desc>(.+))\s{2}(?<loc>(.+))\s+(?<kronor>(-?[\d ]+)),(?<ore>([\d]{2}))");
                 case FormatType.FormatTypeEnum.Swedbank:
-                    return new Regex(@"(?<date1>\d\d-\d\d-\d\d)\s(?<date2>\d\d-\d\d-\d\d)\s+(?<desc>[-:&/*\\' \w\d]+)\s+(?<kronor>-?[ \d]+),(?<ore>\d\d)\s");
+                    return new Regex(@"(?<date1>\d\d-\d\d-\d\d)\s(?<date2>\d\d-\d\d-\d\d)\s+(?<desc>[-:&/*\\' \w\d\(\)]+)\s+(?<kronor>-?[ \d]+),(?<ore>\d\d)\s");
                 case FormatType.FormatTypeEnum.Seb:
                     return new Regex(@"(?<date1>\d\d\d\d-\d\d-\d\d)\s(?<date2>\d\d\d\d-\d\d-\d\d)\s\d{10}S?\s(?<desc>[-:&/*\\' \w\d\.]+)\s(?<kronor>[-\d ]+),(?<ore>\d\d)\s");
                 case FormatType.FormatTypeEnum.Coop:
