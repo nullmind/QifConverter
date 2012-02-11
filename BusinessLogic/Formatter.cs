@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace BusinessLogic
@@ -10,22 +9,22 @@ namespace BusinessLogic
     {
         public static List<FormatType> GetAvailableFormatTypes()
         {
-            var list = new List<FormatType>();
-            list.Add(new FormatType("SJ Prio", FormatType.FormatTypeEnum.SjPrio));
-            list.Add(new FormatType("Swedbank", FormatType.FormatTypeEnum.Swedbank));
-            list.Add(new FormatType("Seb", FormatType.FormatTypeEnum.Seb));
-            list.Add(new FormatType("Coop", FormatType.FormatTypeEnum.Coop));
-            list.Add(new FormatType("ICA", FormatType.FormatTypeEnum.ICA));
+            var list = new List<FormatType>
+                           {
+                               new FormatType("SJ Prio", FormatType.FormatTypeEnum.SjPrio),
+                               new FormatType("Swedbank", FormatType.FormatTypeEnum.Swedbank),
+                               new FormatType("Seb", FormatType.FormatTypeEnum.Seb),
+                               new FormatType("Coop", FormatType.FormatTypeEnum.Coop),
+                               new FormatType("ICA", FormatType.FormatTypeEnum.ICA)
+                           };
 
             return list;
         }
 
         public static QifConversionResult ConvertTextToQif(FormatType.FormatTypeEnum formatType, List<string> inputLines)
         {
-            var conversionResult = new QifConversionResult();
-            var strb = new StringBuilder();
+            var conversionResult = new QifConversionResult {Header = GetQifHeader(formatType)};
 
-            conversionResult.Header = GetQifHeader(formatType);
 
 
             ConvertLinesToQif(formatType, inputLines, conversionResult);
@@ -34,7 +33,7 @@ namespace BusinessLogic
             return conversionResult;
         }
 
-        private static void ConvertLinesToQif(FormatType.FormatTypeEnum formatType, List<string> inputLines, QifConversionResult conversionResult)
+        private static void ConvertLinesToQif(FormatType.FormatTypeEnum formatType, IEnumerable<string> inputLines, QifConversionResult conversionResult)
         {
             var regex = GetRegexForFormatType(formatType);
 
@@ -192,7 +191,7 @@ namespace BusinessLogic
 
         private static string GetYearToUse()
         {
-            return "2011";
+            return DateTime.Now.Year.ToString(CultureInfo.InvariantCulture);
         }
 
         private static Regex GetRegexForFormatType(FormatType.FormatTypeEnum formatType)
@@ -200,7 +199,7 @@ namespace BusinessLogic
             switch (formatType)
             {
                 case FormatType.FormatTypeEnum.SjPrio:
-                    return new Regex(@"(?<date1>\d\d-\d\d)\s+(?<date2>\d\d-\d\d)\s+(?<desc>[\w $#'-@&]+)\s+(?<loc>[\w $#']+)\s+(?<kronor>-?[\d ]+),(?<ore>[\d]{2})");
+                    return new Regex(@"(?<date1>\d\d-\d\d)\s+(?<date2>\d\d-\d\d)\s+(?<desc>[\w $#'-@&]+)\s+(?<loc>[\w $@#']+)\s+(?<kronor>-?[\d ]+),(?<ore>[\d]{2})");
                 //return new Regex(@"(?<date1>(\d\d-\d\d))\s+(?<date2>(\d\d-\d\d))\s+(?<desc>(.+))\s{2}(?<loc>(.+))\s+(?<kronor>(-?[\d ]+)),(?<ore>([\d]{2}))");
                 case FormatType.FormatTypeEnum.Swedbank:
                     return new Regex(@"(?<date1>\d\d-\d\d-\d\d)\s(?<date2>\d\d-\d\d-\d\d)\s+(?<desc>[-:&/*\\' \w\d]+)\s+(?<kronor>-?[ \d]+),(?<ore>\d\d)\s");
@@ -240,7 +239,7 @@ TBank
 
         private static string Capitalize(string value)
         {
-            return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
+            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
         }
 
         public static string CapitalizeWords(string value)
