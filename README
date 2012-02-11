@@ -1,3 +1,5 @@
-Kalle 711
+git push origin
+- Skickar ändringarna till hubben.
 
-asdfasdf
+git pull origin
+- Hämtar från hub
