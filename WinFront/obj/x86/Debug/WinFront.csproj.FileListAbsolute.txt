@@ -1,0 +1,10 @@
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\WinFront\bin\Debug\QifConverterWin.exe
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\WinFront\bin\Debug\QifConverterWin.pdb
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\WinFront\bin\Debug\BusinessLogic.dll
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\WinFront\bin\Debug\BusinessLogic.pdb
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\WinFront\obj\x86\Debug\WinFront.csprojResolveAssemblyReference.cache
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\WinFront\obj\x86\Debug\WinFront.Form1.resources
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\WinFront\obj\x86\Debug\WinFront.Properties.Resources.resources
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\WinFront\obj\x86\Debug\WinFront.csproj.GenerateResource.Cache
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\WinFront\obj\x86\Debug\QifConverterWin.exe
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\WinFront\obj\x86\Debug\QifConverterWin.pdb

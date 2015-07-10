@@ -30,9 +30,11 @@ namespace WinFront
             cbFormat.SelectedIndex = 0;
 
 
-            rtbInput.Text = @"09-10 	09-12 	KRONANS DROGHANDEL 127 	V#STER$S 			212,00
-09-09 	09-12 	ÖRONMOTTAGNINGEN 	VÄSTERÅS 			300,00
-09-09 	09-12 	2 RUM OCH KOK 	VESTERAS 			320,00";
+            rtbInput.Text = @"84244  9049846315  Privatkonto          SEK     14-12-29         14-12-29           AKTIEINVEST                         Autogiro                     -1 000,00
+";
+
+
+            txtYear.Text = DateTime.Today.Year.ToString();
         }
 
         private void btnSelectFile_Click(object sender, EventArgs e)
@@ -52,14 +54,50 @@ namespace WinFront
 
             List<string> inputLines = GetInputAsStringList();
 
-            var conversionResult = Formatter.ConvertTextToQif(selectedFormatType.InternalValue, inputLines);
+            Formatter.YearToUse = txtYear.Text;
 
-            rtbLog.Clear();
-            rtbOutput.Clear();
-            rtbOutput.AppendText(conversionResult.Output);
-            tabControl1.SelectedTab = tabPageOutput;
+            switch (selectedFormatType.InternalValue)
+            {
+                case FormatType.FormatTypeEnum.SjPrio:
+                case FormatType.FormatTypeEnum.Swedbank:
+                case FormatType.FormatTypeEnum.Seb:
+                case FormatType.FormatTypeEnum.ICA:
+                    {
+                        var conversionResult = Formatter.ConvertTextToQif(selectedFormatType.InternalValue, inputLines);
+                        conversionResult.FormatOutput();
 
-            DoPostConversionLogging(conversionResult);
+                        rtbLog.Clear();
+                        rtbOutput.Clear();
+                        rtbOutput.AppendText(conversionResult.Output);
+                        tabControl1.SelectedTab = tabPageOutput;
+
+                        DoPostConversionLogging(conversionResult);
+                    }
+                    break;
+                case FormatType.FormatTypeEnum.Coop:
+                case FormatType.FormatTypeEnum.Peugeot:
+                    {
+                        try
+                        {
+                            var formatter = new FormatterV2(selectedFormatType.InternalValue, txtYear.Text);
+                            var result = formatter.ConvertText(inputLines);
+
+                            rtbLog.Clear();
+                            rtbOutput.Clear();
+                            rtbOutput.AppendText(result.Output);
+                            tabControl1.SelectedTab = tabPageOutput;
+                            DoPostConversionLogging(result);
+                        }
+                        catch (Exception exc)
+                        {
+                            MessageBox.Show(string.Format("Exception caught: {0}", exc.Message));
+                        }
+
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private void DoPostConversionLogging(QifConversionResult conversionResult)
@@ -97,6 +135,12 @@ namespace WinFront
                 var fileName = saveFileDialog1.FileName;
                 File.WriteAllLines(fileName, rtbOutput.Lines);
             }
+        }
+
+
+        private void rtbInput_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

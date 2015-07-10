@@ -41,9 +41,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formatter.cs" />
-    <Compile Include="FormatType.cs" />
+    <Compile Include="FormatterV2.cs" />
+    <Compile Include="IOutputCreator.cs" />
+    <Compile Include="Model\FormatType.cs" />
+    <Compile Include="Model\ParseResult.cs" />
+    <Compile Include="Model\QifTransaction.cs" />
+    <Compile Include="Model\Transaction.cs" />
+    <Compile Include="Parsers\PeugeotParser.cs" />
+    <Compile Include="QifOutputCreator.cs" />
+    <Compile Include="Parsers\IParser.cs" />
+    <Compile Include="ParserFactory.cs" />
+    <Compile Include="Parsers\CoopParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QifConversionResult.cs" />
+    <Compile Include="Model\QifConversionResult.cs" />
+    <Compile Include="Parsers\RegexParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

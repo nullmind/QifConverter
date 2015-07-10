@@ -1,0 +1,5 @@
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\BusinessLogic\bin\Debug\BusinessLogic.dll
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\Users\rihe\Dropbox\Password\Code\QifConverter\BusinessLogic\obj\Debug\BusinessLogic.pdb

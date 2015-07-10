@@ -14,7 +14,9 @@
             Swedbank,
             Seb,
             Coop,
-            ICA
+            ICA,
+            SwedbankOld,
+            Peugeot
         }
 
         public string DisplayName { get; set; }

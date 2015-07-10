@@ -10,14 +10,16 @@ namespace BusinessLogic
 
         public string Output
         {
-            get
-            {
-                var strb = new StringBuilder();
-                strb.AppendLine(Header);
-                strb.AppendLine(OutputLines.ToString());
+            get;set;
+        }
 
-                return strb.ToString();
-            }
+        public void FormatOutput()
+        {
+            var strb = new StringBuilder();
+            strb.AppendLine(Header);
+            strb.AppendLine(OutputLines.ToString());
+
+            Output = strb.ToString();
         }
 
         public bool Success { get; set; }

@@ -1,0 +1,9 @@
+git push origin
+- Skickar ändringarna till hubben.
+
+<<<<<<< HEAD
+asdfasdf
+=======
+git pull origin
+- Hämtar från hub
+>>>>>>> e23c4cfec10fc2510a8dc323a4fdad055c0e7ad4
