@@ -16,6 +16,8 @@ namespace BusinessLogic
                     return new CoopParser();
                 case FormatType.FormatTypeEnum.Peugeot:
                     return new PeugeotParser();
+                case FormatType.FormatTypeEnum.Swedbank:
+                    return new SwedbankParser();
                 default:
                     return new RegexParser(formatType);
             }

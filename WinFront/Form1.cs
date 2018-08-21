@@ -59,7 +59,6 @@ namespace WinFront
             switch (selectedFormatType.InternalValue)
             {
                 case FormatType.FormatTypeEnum.SjPrio:
-                case FormatType.FormatTypeEnum.Swedbank:
                 case FormatType.FormatTypeEnum.Seb:
                 case FormatType.FormatTypeEnum.ICA:
                     {
@@ -75,6 +74,7 @@ namespace WinFront
                     }
                     break;
                 case FormatType.FormatTypeEnum.Coop:
+                case FormatType.FormatTypeEnum.Swedbank:
                 case FormatType.FormatTypeEnum.Peugeot:
                     {
                         try

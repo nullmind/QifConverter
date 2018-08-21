@@ -19,5 +19,15 @@ namespace Tests
             var formatter = new BusinessLogic.FormatterV2(formatType, "2014");
             var result = formatter.ConvertText(inputLines);
         }
+
+        [TestMethod]
+        public void TestSwedbankParser()
+        {
+            var formatType = BusinessLogic.FormatType.FormatTypeEnum.Swedbank;
+            var inputLines = File.ReadAllLines(@"..\..\TestFiles\Swedbank\Service0101-0820.csv", Encoding.GetEncoding("windows-1252")).ToList();
+
+            var formatter = new BusinessLogic.FormatterV2(formatType, "2018");
+            var result = formatter.ConvertText(inputLines);
+        }
     }
 }

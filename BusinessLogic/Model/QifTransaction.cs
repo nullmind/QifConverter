@@ -19,7 +19,7 @@ namespace BusinessLogic.Model
         {
             var date = _transaction.Date.ToString("yyyy-MM-dd");
             var desc = _transaction.Description;
-            var val = string.Format("{0}{1},{2}", _transaction.IsExpenseTransaction ? "-" : "", _transaction.Kronor, _transaction.Ore);
+            var val = string.Format("{0}{1},{2}", _transaction.IsExpenseTransaction ? "-" : "", _transaction.Kronor, _transaction.Ore.ToString().PadLeft(2, '0'));
             return GetQifText(date, desc, val);
         }
 

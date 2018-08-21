@@ -62,6 +62,9 @@
   <ItemGroup>
     <Content Include="TestFiles\Coop\Coop150101-150701.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="TestFiles\Swedbank\Service0101-0820.csv" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

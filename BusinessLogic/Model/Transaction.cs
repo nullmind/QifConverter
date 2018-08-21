@@ -19,7 +19,8 @@ namespace BusinessLogic.Model
 
         public override string ToString()
         {
-            return string.Format("{0} {1} {2}{3},{4}", Date, Description, IsExpenseTransaction ? "-" : "", Kronor, Ore);
+            var foo =  string.Format("{0} {1} {2}{3},{4}", Date, Description, IsExpenseTransaction ? "-" : "", Kronor, Ore.ToString().PadLeft(2, '0'));
+            return foo;
         }
     }
 }

@@ -47,6 +47,7 @@
     <Compile Include="Model\ParseResult.cs" />
     <Compile Include="Model\QifTransaction.cs" />
     <Compile Include="Model\Transaction.cs" />
+    <Compile Include="Parsers\SwedbankParser.cs" />
     <Compile Include="Parsers\PeugeotParser.cs" />
     <Compile Include="QifOutputCreator.cs" />
     <Compile Include="Parsers\IParser.cs" />
